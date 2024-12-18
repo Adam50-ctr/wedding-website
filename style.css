@@ -1,0 +1,1008 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* basic colors */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 3;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.852); /* Sötétebb háttér szín */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Árnyék a navbar alá */
+  padding: 0 10px;
+  a {
+    opacity: 1; /* Kisebb padding a linkek között */
+  }
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 19px 29px; /* Adjusted padding for better spacing */
+  text-decoration: none;
+  position: relative;
+  opacity: 0.7;
+  font-size: 18px;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 5px;
+  left: 25%;
+  background-color: #fff;
+  transform-origin: center;
+  transition: transform 0.35s ease-out;
+}
+
+.navbar a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0.7;
+  padding: 14px 20px;
+}
+
+.hero {
+  background: url("../img/hero.jpg") center/cover no-repeat,
+    var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--text-color);
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__content {
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero__title {
+  font-size: 90px;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin: auto 10rem;
+}
+
+.hero__text {
+  font-family: "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 30px 0;
+}
+
+/* mission section */
+.mission {
+  padding: 50px 0;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+}
+
+.mission__content {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 85%;
+}
+
+.mission__content__img {
+  border-radius: 20px; /* Keep the border radius */
+  max-width: 100000px;
+  width: 100%; /* Increase the width to make the image larger */
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  margin-right: 8rem; /* Make the image square */
+}
+
+.mission__text,
+.mission__title {
+  text-align: center;
+  width: 85%; /* Set the width to 50% */
+}
+
+.mission__title {
+  font-size: 46px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  /* Ensure the title takes up half the width */
+}
+
+.mission__text {
+  font-size: 27px;
+  font-family: "Roboto", sans-serif;
+  line-height: 36px;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 55px 0; /* Reduce the margin */
+}
+
+/* Gallery */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto auto 9rem auto;
+  border-top: 1px solid #888;
+  padding-top: 5rem;
+}
+
+.gallery__title {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Raleway", sans-serif;
+}
+
+.gallery__text {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 5rem;
+  font-family: "Times New Roman", serif;
+  color: #666;
+}
+
+.gallery__images {
+  display: flex; /* A képek egymás mellé kerülnek */
+  gap: 20px; /* Hézag a képek között */
+  width: 100%; /* A szülő konténer szélességéhez igazítva */
+  border-radius: 10px; /* Az egész képsáv lekerekítése (ha szükséges) */
+  transform: translateX(0);
+}
+
+.gallery__images img {
+  flex: 0 0 100%; /* Minden kép fix szélességű */
+  width: calc((100% / 3) - 20px); /* Oszd fel a galéria szélességét 3 részre */
+  height: auto; /* Magasság a képarány fenntartásához */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.7s ease-in-out; /* Animált mozgás a lapozáskor */
+}
+
+.gallery__wrapper {
+  width: 1200px; /* Fixált szélesség */
+  max-width: 100%; /* Dinamikusan illeszkedik kisebb képernyőkhöz */
+  margin: 0 auto; /* Középre igazítás */
+  overflow: hidden;
+}
+.gallery__nav {
+  position: absolute;
+  top: 70%; /* Gombok a képek vertikális közepén */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.gallery__nav button {
+  pointer-events: all;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.gallery__nav button:hover {
+  background: #007bff;
+  scale: 1.1;
+}
+
+.gallery__images {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  border-radius: 10px;
+  transform: translateX(0);
+  transition: transform 0.7s ease-in-out; /* Animált mozgás lapozáskor */
+}
+
+.gallery__images img {
+  flex: 0 0 auto;
+  width: calc((100% / 3) - 20px);
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* Price section */
+.price {
+  padding: 50px 0 200px 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  height: auto;
+  background-color: #141414;
+  font-family: "Raleway", sans-serif;
+}
+
+.price__title {
+  font-size: 46px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  margin-top: 30px;
+  color: white;
+  position: relative;
+}
+.price__title::after {
+  content: "";
+  display: block;
+  width: 190px;
+  height: 2px;
+  background: #ffe44c; /* Sárga vonal */
+  margin: 10px auto 0;
+}
+
+.price__cards {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 6rem;
+}
+.price__card {
+  background: linear-gradient(
+    135deg,
+    #6a11cb 0%,
+    #2575fc 100%
+  ); /* Színátmenetes háttér */
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  height: 510px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Árnyék a kártyákhoz */
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  opacity: 0; /* Alapértelmezett láthatatlanság animáció előtt */
+  transform: translateY(50px); /* Kezdő pozíció animáció előtt */
+}
+
+.price__card.animate {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.price__card:nth-child(1) {
+  animation-delay: 0.2s; /* Késleltetés az első kártyánál */
+}
+
+.price__card:nth-child(2) {
+  animation-delay: 0.4s; /* Késleltetés a második kártyánál */
+}
+
+.price__card:nth-child(3) {
+  animation-delay: 0.6s; /* Késleltetés a harmadik kártyánál */
+}
+.price__card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.price__card__title {
+  font-size: 36px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: #ffe44c;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.price__card__price {
+  font-size: 33px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.features__title {
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.features {
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.highlight {
+  scale: 1.1;
+}
+
+/* Contact */
+.contact {
+  padding: 50px 0;
+  background-color: var(--background-color);
+  text-align: center;
+  height: 80vh;
+  font-family: "Raleway", sans-serif;
+  min-height: 100vh;
+}
+
+.contact__title {
+  font-size: 46px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  margin: 30px auto 10px auto;
+}
+
+.contact__text {
+  font-size: 24px;
+  font-family: "Times New Roman", serif;
+  color: #666;
+  margin-bottom: 5rem;
+}
+
+.contact__content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact__form__icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.contact__form__subtitle {
+  font-size: 23px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.contact__form__text {
+  font-size: 18px;
+  font-family: "Times New Roman", serif;
+  color: #080808;
+}
+
+.contact__form_availability {
+  font-size: 23px;
+  font-family: "Times New Roman", serif;
+  color: #080808;
+  margin-top: 20px;
+}
+
+/* baseline */
+.baseline {
+  order: 1;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-family: "Times New Roman", serif;
+  color: #080808;
+  margin-top: 200px;
+}
+
+.baseline__leftside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Minden más elem balra igazítva */
+  width: 100%;
+  position: relative;
+}
+.logo {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #000000;
+  opacity: 0.9;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+}
+.mininavbar {
+  position: absolute;
+  left: 20px;
+  top: 100px;
+}
+
+.mininavbar a {
+  margin-right: 17px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.mininavbar a:hover {
+  opacity: 0.7;
+}
+
+.email__and__sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+
+.subscribe-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: "Times New Roman", serif;
+  color: #080808;
+  text-align: center;
+}
+
+.baseline__rightside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Minden más elem jobbra igazítva */
+  width: 100%;
+  position: relative;
+}
+
+.join {
+  margin-right: 380px;
+  font-size: 33px;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 20px; /* Hézag az alatta lévő elemhez */
+}
+
+.email__and__sub {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+  margin-right: 3rem;
+}
+
+.email__and__sub input {
+  flex-grow: 1; /* Make the input field fill the available space */
+  max-width: 300px; /* Set a maximum width for the input field */
+  padding: 13px;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  background-color: #bdbdbd4f;
+}
+
+.email__and__sub button {
+  padding: 12px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.email__and__sub button:hover {
+  background-color: #0056b3; /* Hover állapot */
+}
+
+.subscribe-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: "Times New Roman", serif;
+  color: #080808;
+  text-align: center;
+}
+
+.subscribing {
+  text-align: center;
+  margin-right: 5rem;
+  margin-top: 0.6rem;
+  color: #535252;
+}
+
+/* Footer */
+.footer {
+  background-color: #141414;
+  color: white;
+  padding: 31px 0;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  margin-top: 80px;
+  position: relative;
+  order: 2; /* A footer mindig alul marad */
+  margin-top: 20px;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding: 4rem 1.2rem 4rem 1.2rem;
+  border-top: 1px solid #888;
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__links a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.footer__links a:hover {
+  color: #007bff;
+}
+
+.footer__copyright {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1; /* Láthatóvá válik */
+    transform: translateY(0); /* Visszatér alaphelyzetbe */
+  }
+}
+
+/* media query */
+
+@media (max-width: 2520px) {
+  .subscribing {
+    font-size: 14px;
+    margin-top: 0.4rem;
+  }
+
+  .email__and__sub input {
+    max-width: 250px;
+    padding: 10px;
+  }
+
+  .email__and__sub button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .join {
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-right: 21rem; /* Move the join text slightly to the right */
+  }
+  .contact {
+    display: flex;
+    flex-direction: column; /* Tartalom oszlopban egymás alá */
+    min-height: 76vh;
+  }
+
+  .baseline {
+    order: 1; /* A baseline (subscribe) tartalom első helyen marad */
+    margin-top: 10rem; /* Töröljük a felesleges margin-t */
+  }
+
+  footer {
+    order: 2; /* A footer a baseline után jelenik meg */
+    margin-top: 300px; /* Kis térköz a subscribe rész fölött */
+  }
+  .footer__links {
+    flex-direction: column; /* Linkek egymás alá */
+    gap: 20px; /* Hézag a linkek között */
+    margin-left: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+  .right-side {
+    display: none; /* Alapból rejtett */
+    flex-direction: column;
+    align-items: center;
+    background: #141414;
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    width: 100%;
+    padding: 20px;
+    z-index: 9;
+  }
+
+  .right-side.active {
+    display: flex; /* Láthatóvá válik aktív állapotban */
+  }
+
+  .hero__title {
+    font-size: 60px;
+    margin: 0 2rem;
+    padding-top: 6rem; /* Add padding to move the text down */
+  }
+
+  .mission__content__img {
+    display: none;
+  }
+
+  .mission__content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+  }
+
+  .mission__text,
+  .mission__title {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .mission {
+    height: 80vh; /* Increase the height */
+  }
+  .gallery__title {
+    font-size: 40px; /* Reduced font size */
+  }
+
+  .gallery__text {
+    font-size: 20px; /* Reduced font size */
+  }
+
+  .gallery__images img {
+    width: calc(
+      (100% / 1) - 20px
+    ); /* Oszd fel a galéria szélességét 2 részre */
+    width: 250px; /* Fix magasság a képeknek */
+  }
+  .gallery__nav {
+    top: 73%;
+    left: 0;
+    right: 0;
+    width: 100vw;
+  }
+
+  .gallery__nav button {
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+  }
+
+  .price__card {
+    min-height: 100%; /* Set height to auto for responsiveness */
+  }
+
+  .price__cards {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center align cards */
+  }
+
+  .highlight {
+    scale: 1;
+  }
+
+  .price__card {
+    width: 320px;
+    height: 530px;
+  }
+
+  .price__card__title {
+    font-size: 39px;
+  }
+
+  .price__card__price {
+    font-size: 36px;
+  }
+
+  .subscribing {
+    font-size: 14px;
+    margin-top: 0.4rem;
+  }
+
+  .email__and__sub input {
+    max-width: 250px;
+    padding: 10px;
+  }
+
+  .email__and__sub button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .join {
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-right: 21rem; /* Move the join text slightly to the right */
+  }
+  .contact {
+    display: flex;
+    flex-direction: column; /* Tartalom oszlopban egymás alá */
+    min-height: 90vh;
+  }
+
+  .baseline {
+    order: 1; /* A baseline (subscribe) tartalom első helyen marad */
+    margin-top: 0; /* Töröljük a felesleges margin-t */
+  }
+
+  footer {
+    order: 2; /* A footer a baseline után jelenik meg */
+    margin-top: 150px; /* Kis térköz a subscribe rész fölött */
+  }
+  .footer__links {
+    flex-direction: column; /* Linkek egymás alá */
+    gap: 20px; /* Hézag a linkek között */
+    margin-left: 3rem;
+  }
+}
+
+@media (max-width: 646px) {
+  .baseline__leftside {
+    display: none;
+  }
+  .baseline__rightside {
+    align-items: center; /* Középre igazítás függőlegesen */
+    justify-content: center; /* Középre igazítás vízszintesen */
+    text-align: center; /* Szöveg középre */
+    margin: 0 auto; /* Automatikusan középre helyezi */
+  }
+
+  .join {
+    margin-right: 0; /* Eltávolítja a korábbi jobbra igazító margót */
+  }
+
+  .email__and__sub {
+    justify-content: center; /* Az input és a gomb középre kerül */
+    margin-right: 0; /* Eltávolítja a jobbra igazított margót */
+  }
+}
+
+@media (min-width: 555px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 4rem 1rem;
+  }
+
+  .baseline {
+    margin-top: 6rem; /* Elegendő térköz */
+  }
+
+  .baseline__rightside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .email__and__sub {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .join {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .contact__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .contact__form__text {
+    margin: auto 2rem;
+  }
+
+  .baseline {
+    margin-top: 4rem; /* Távolság a contact szekció alatt */
+  }
+}
+
+@media (max-width: 383px) {
+  .hero__title {
+    font-size: 40px;
+    margin: 0 1rem;
+  }
+
+  .mission__title {
+    font-size: 36px;
+  }
+
+  .mission__text {
+    font-size: 20px;
+  }
+
+  .gallery__title {
+    font-size: 36px;
+  }
+
+  .gallery__text {
+    font-size: 18px;
+  }
+
+  .price__title {
+    font-size: 36px;
+  }
+
+  .price__card {
+    width: 280px;
+    height: 500px;
+  }
+
+  .price__card__title {
+    font-size: 32px;
+  }
+
+  .price__card__price {
+    font-size: 30px;
+  }
+
+  .features__title {
+    font-size: 26px;
+  }
+
+  .features {
+    font-size: 18px;
+  }
+
+  .contact__title {
+    font-size: 36px;
+  }
+
+  .contact__text {
+    font-size: 20px;
+  }
+
+  .contact__form__subtitle {
+    font-size: 20px;
+  }
+
+  .contact__form__text {
+    font-size: 16px;
+  }
+
+  .contact__form_availability {
+    font-size: 20px;
+  }
+
+  .subscribe-text {
+    font-size: 16px;
+  }
+
+  .footer__content {
+    padding: 2rem 1.2rem;
+  }
+
+  .footer__links a {
+    font-size: 16px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+  }
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 6rem 1rem 70rem 1rem;
+  }
+
+  .baseline {
+    margin-top: 6rem; /* Elegendő térköz */
+  }
+
+  .baseline__rightside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .email__and__sub {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .join {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .contact__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .contact__form__text {
+    margin: auto 2rem;
+  }
+
+  .baseline {
+    margin-top: 4rem; /* Távolság a contact szekció alatt */
+  }
+}
